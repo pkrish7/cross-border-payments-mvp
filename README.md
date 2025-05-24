@@ -1,4 +1,4 @@
-# mini-wise-architecture
+# cross-border-payments-mvp
 
 This repository contains a simplified implementation of a cross-border payments platform inspired by [Wise](https://wise.com).  
 The goal is to showcase a clean microservices architecture using Java, Spring Boot, Kafka, and PostgreSQL, suitable for learning and interview discussions.
