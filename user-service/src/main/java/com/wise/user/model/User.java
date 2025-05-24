@@ -25,10 +25,10 @@ public class User {
     private String name;
 
     @Column(nullable = false, unique = true)
-    @Email(message = "Email should be valid")
+    @Email(message = "Email must be a valid address containing '@' symbol.")
     private String email;
 
-    @Pattern(regexp = "^\\+?[0-9]*$", message = "Phone number must contain only digits and optional leading +")
+    @Pattern(regexp = "^\\+?[0-9]*$", message = "Phone number must contain only digits and optional leading '+'.")
     @Column(unique = true)
     private String phone;
 
