@@ -1,6 +1,9 @@
 package com.wise.user.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 import java.time.Instant;
@@ -18,12 +21,15 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
     @Column(nullable = false, unique = true)
+    @Email(message = "Email should be valid")
     private String email;
 
-    @Column(nullable = true, unique = true)
+    @Pattern(regexp = "^\\+?[0-9]*$", message = "Phone number must contain only digits and optional leading +")
+    @Column(unique = true)
     private String phone;
 
     @Column(nullable = false)
