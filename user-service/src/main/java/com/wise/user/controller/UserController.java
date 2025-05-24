@@ -1,5 +1,6 @@
 package com.wise.user.controller;
 
+import com.wise.user.dto.CreateUserDto;
 import com.wise.user.model.User;
 import com.wise.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -21,14 +22,28 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody CreateUserDto createUserDto) {
+        User user = User.builder()
+                .name(createUserDto.getName())
+                .email(createUserDto.getEmail())
+                .phone(createUserDto.getPhone())
+                .passwordHash(createUserDto.getPassword())
+                .build();
+
         User savedUser = userService.saveUser(user);
         return ResponseEntity.ok(savedUser);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        return userService.getUserById(id)
+    @GetMapping("/by-email")
+    public ResponseEntity<User> getUserByEmail(@RequestParam String email) {
+        return userService.getUserByEmail(email)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/by-phone")
+    public ResponseEntity<User> getUserByPhone(@RequestParam String phone) {
+        return userService.getUserByPhone(phone)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
