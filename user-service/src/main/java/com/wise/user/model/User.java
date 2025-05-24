@@ -1,12 +1,6 @@
 package com.wise.user.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
-import jakarta.persistence.PrePersist;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
@@ -19,7 +13,8 @@ import java.time.Instant;
 @Builder
 @Table(name = "users")
 public class User {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -27,6 +22,9 @@ public class User {
 
     @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = true, unique = true)
+    private String phone;
 
     @Column(nullable = false)
     private String passwordHash;

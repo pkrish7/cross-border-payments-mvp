@@ -1,10 +1,13 @@
 package com.wise.user.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class CreateUserDto {
     private String name;
+    private String phone;
     private String email;
     private String password;
 }
