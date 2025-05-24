@@ -1,11 +1,12 @@
 package com.wise.user.controller;
 
-import com.wise.user.dto.CreateUserDto;
-import com.wise.user.dto.UserResponseDto;
+import com.wise.user.model.User;
 import com.wise.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -20,13 +21,20 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody CreateUserDto dto) {
-        UserResponseDto created = userService.createUser(dto);
-        return ResponseEntity.ok(created);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User savedUser = userService.saveUser(user);
+        return ResponseEntity.ok(savedUser);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDto> getUser(@PathVariable Long id) {
-        return ResponseEntity.ok(userService.getUser(id));
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        return userService.getUserById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers(){
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 }
