@@ -7,7 +7,35 @@ The goal is to showcase a clean microservices architecture using Java, Spring Bo
 
 ## Architecture Overview
 
-![Architecture Diagram](./docs/mini-wise-architecture.png)
++---------------------+
+|   Client (Web/Mobile) |
++----------+----------+
+           |
+           v
++---------------------+
+|   API Gateway / LB   |
++----------+----------+
+           |
+    +------+------+-------------------------------+
+    |             |                 |             |
+    v             v                 v             v (future)
++---------+   +----------+     +-----------+    +--------------+
+|  User   |   | Account  |     |  Payment   |    | Notification |
+| Service|   | Service  |     |  Service   |    |   Service    |
++----+----+   +----+-----+     +-----+-----+    +--------------+
+     |             |                 |
+     |             |                 |
+     v             v                 v
++---------+   +----------+     +-----------+       +--------------+
+|Postgres |   | Postgres |     | Postgres  | <---> | Kafka Topics |
++---------+   +----------+     +-----------+       +--------------+
+                                      |
+                                      v
+                        +------------------------+
+                        | Exchange Rate API (3rd |
+                        | party like Fixer.io)   |
+                        +------------------------+
+
 
 ### Core Components:
 
