@@ -5,10 +5,9 @@ import jakarta.mail.internet.MimeMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.SimpleMailMessage;
 
 import java.io.UnsupportedEncodingException;
 
@@ -17,8 +16,6 @@ import java.io.UnsupportedEncodingException;
 @Slf4j
 public class NotificationService {
     private final JavaMailSender mailSender;
-    private final String mailHost;
-    private final String mailPort;
     private final String mailUsername;
     private static final String APP_NAME = "MINI WISE";
 
@@ -28,8 +25,6 @@ public class NotificationService {
             @Value("${spring.mail.port}") String mailPort,
             @Value("${spring.mail.username}") String mailUsername) {
         this.mailSender = mailSender;
-        this.mailHost = mailHost;
-        this.mailPort = mailPort;
         this.mailUsername = mailUsername;
 
         log.info("Mail Configuration in NotificationService:");
