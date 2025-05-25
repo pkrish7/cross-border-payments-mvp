@@ -30,7 +30,7 @@ public class UserController {
                 .passwordHash(createUserDto.getPassword())
                 .build();
 
-        User savedUser = userService.saveUser(user);
+        User savedUser = userService.createUser(user);  // <-- use createUser here
         return ResponseEntity.ok(savedUser);
     }
 

@@ -85,6 +85,8 @@ Run unit tests:
 * Add database persistence (PostgreSQL)
 * Integrate with Notification Service
 * Implement authentication (JWT / OAuth2)
+* Implement PhoneNumber & Email Validator
+* Hash password storage
 
 ## Folder Structure
 user-service/
