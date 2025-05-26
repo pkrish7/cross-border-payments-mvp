@@ -1,10 +1,10 @@
-package com.wise.notification.service;
+package com.wise.user.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wise.common.events.UserCreatedEvent;
-import com.wise.notification.model.User;
-import com.wise.notification.repository.UserRepository;
+import com.wise.user.model.User;
+import com.wise.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;

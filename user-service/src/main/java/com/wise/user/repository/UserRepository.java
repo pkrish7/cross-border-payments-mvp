@@ -1,6 +1,6 @@
-package com.wise.notification.repository;
+package com.wise.user.repository;
 
-import com.wise.notification.model.User;
+import com.wise.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

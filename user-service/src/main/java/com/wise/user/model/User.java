@@ -1,4 +1,4 @@
-package com.wise.notification.model;
+package com.wise.user.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

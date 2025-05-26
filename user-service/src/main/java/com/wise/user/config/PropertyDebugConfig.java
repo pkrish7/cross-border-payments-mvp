@@ -1,4 +1,4 @@
-package com.wise.notification.config;
+package com.wise.user.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.beans.factory.InitializingBean;

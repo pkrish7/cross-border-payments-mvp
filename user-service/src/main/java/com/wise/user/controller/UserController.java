@@ -1,8 +1,8 @@
-package com.wise.notification.controller;
+package com.wise.user.controller;
 
 import com.wise.common.dto.CreateUserDto;
-import com.wise.notification.model.User;
-import com.wise.notification.service.UserService;
+import com.wise.user.model.User;
+import com.wise.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
