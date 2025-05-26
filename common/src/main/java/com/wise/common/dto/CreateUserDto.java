@@ -1,4 +1,4 @@
-package com.wise.user.dto;
+package com.wise.common.dto;
 
 import lombok.Getter;
 import lombok.Setter;
