@@ -1,14 +1,13 @@
-package com.wise.user.service;
+package com.wise.notification.service;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.SimpleMailMessage;
 
 import java.io.UnsupportedEncodingException;
 
@@ -17,8 +16,6 @@ import java.io.UnsupportedEncodingException;
 @Slf4j
 public class NotificationService {
     private final JavaMailSender mailSender;
-    private final String mailHost;
-    private final String mailPort;
     private final String mailUsername;
     private static final String APP_NAME = "MINI WISE";
 
@@ -28,8 +25,6 @@ public class NotificationService {
             @Value("${spring.mail.port}") String mailPort,
             @Value("${spring.mail.username}") String mailUsername) {
         this.mailSender = mailSender;
-        this.mailHost = mailHost;
-        this.mailPort = mailPort;
         this.mailUsername = mailUsername;
 
         log.info("Mail Configuration in NotificationService:");
@@ -53,8 +48,8 @@ public class NotificationService {
             log.debug("Setting From header as: {} <{}>", displayName, mailUsername);
 
             helper.setTo(email);
-            helper.setSubject("Welcome to Our Service!");
-            helper.setText(String.format("Hello %s,\n\nWelcome to our service!", name));
+            helper.setSubject("Welcome to " + APP_NAME);
+            helper.setText(String.format("Hello %s,\n\nWelcome to MINI WISE! 🚀\n\nWe're thrilled to have you join our community. Get ready to explore awesome features and stay tuned for exciting updates!\n\nIf you have any questions, feel free to reach out.\n\nBest wishes,\nThe MINI WISE Team", name));
 
             mailSender.send(mimeMessage);
             log.info("Welcome email sent successfully to: {}", email);

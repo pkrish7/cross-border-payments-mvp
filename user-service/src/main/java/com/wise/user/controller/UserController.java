@@ -1,6 +1,6 @@
 package com.wise.user.controller;
 
-import com.wise.user.dto.CreateUserDto;
+import com.wise.common.dto.CreateUserDto;
 import com.wise.user.model.User;
 import com.wise.user.service.UserService;
 import lombok.RequiredArgsConstructor;

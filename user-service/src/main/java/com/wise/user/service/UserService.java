@@ -2,7 +2,7 @@ package com.wise.user.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wise.user.events.UserCreatedEvent;
+import com.wise.common.events.UserCreatedEvent;
 import com.wise.user.model.User;
 import com.wise.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

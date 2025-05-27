@@ -1,4 +1,4 @@
-package com.wise.user.events;
+package com.wise.common.events;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

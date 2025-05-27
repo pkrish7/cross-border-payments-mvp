@@ -1,14 +1,14 @@
-package com.wise.user.consumer;
+package com.wise.notification.consumer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wise.user.events.UserCreatedEvent;
-import com.wise.user.service.NotificationService;
+import com.wise.notification.service.NotificationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.mail.MailSendException;
 import org.springframework.stereotype.Component;
+import com.wise.common.events.UserCreatedEvent;
 
 @Component
 @Slf4j
